@@ -1,0 +1,24 @@
+extends ../layouts/app
+
+block content
+  article.content
+    header
+      h1 Меню
+        a(href="/dashboard/nav/create").btn.btn-primary.pull-right Добавить элемент
+    table.table
+      theader
+        tr
+          th #
+          th Текст ссылки
+          th(colspan="2") Url
+      tbody
+        each link, index in links
+          tr
+            td= index + 1
+            td= link.anchor
+            td= link.href
+            td.table-controls
+              a(href="/dashboard/nav/edit/#{link.id}").btn.btn-default.btn-primary
+                i.fa.fa-pencil
+              a(href="/dashboard/nav/destroy/#{link.id}").btn.btn-default.btn-danger
+                i.fa.fa-trash

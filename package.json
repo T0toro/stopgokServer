@@ -1,17 +1,58 @@
 {
-  "name": "stopgokServer",
-  "version": "0.0.0",
-  "private": true,
+  "name": "Gargantua",
+  "description": "simple content manager system based on express, mongoose.",
+  "version": "0.2.0",
+  "author": {
+    "name": "Troynov Evgeniy",
+    "email": "troinof@gmail.com"
+  },
+  "engines": {
+    "node": "^6.2.x"
+  },
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "NODE_PATH=./config:./app/controllers NODE_ENV=development ./node_modules/.bin/nodemon app.js",
+    "test": "make test"
   },
   "dependencies": {
-    "body-parser": "~1.13.2",
-    "cookie-parser": "~1.3.5",
-    "debug": "~2.2.0",
-    "express": "~4.13.1",
-    "jade": "~1.11.0",
-    "morgan": "~1.6.1",
-    "serve-favicon": "~2.3.0"
-  }
+    "async": "2.0.0-rc.6",
+    "bcryptjs": "^2.3.0",
+    "body-parser": "1.15.2",
+    "compression": "^1.6.0",
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^1.0.0",
+    "cookie-parser": "^1.3.5",
+    "cookie-session": "^1.2.0",
+    "csurf": "^1.8.3",
+    "express": "^4.13.1",
+    "express-session": "^1.11.3",
+    "jade": "^1.11.0",
+    "method-override": "^2.3.3",
+    "mongoose": "^4.5.2",
+    "mongoose-timestamp": "^0.6.0",
+    "mongoose-user": "0.0.1",
+    "morgan": "^1.6.1",
+    "passport": "0.3.2",
+    "passport-local": "^1.0.0",
+    "view-helpers": "^0.1.5",
+    "winston": "2.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^2.13.1",
+    "eslint-config-google": "^0.6.0",
+    "flow-bin": "^0.27.0",
+    "mocha": "latest",
+    "nodemon": "latest",
+    "should": "latest",
+    "supertest": "latest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/T0toro/express-mongoose-passport-boilerplate"
+  },
+  "keywords": [
+    "mvc",
+    "express",
+    "mongoose",
+    "cms"
+  ]
 }

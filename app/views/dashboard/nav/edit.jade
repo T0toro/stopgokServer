@@ -1,0 +1,17 @@
+extends ../layouts/app
+
+block main
+  h2 Редактировать статью:
+    span.article-name= article.name
+
+block content
+  form(action="/dashboard/nav/update", method="POST")
+    fieldset
+      p.form-group
+        input(type="text", name="anchor", placeholder="Анкор", value="#{ !!link.anchor.length ? link.anchor: '' }").form-control
+      p.form-group
+        input(type="text", name="href", placeholder="http://examples.com/test", value="#{ !!link.href.length ? link.href : '' }").form-control
+      p.form-group
+        input(type="hidden", name="id", value="#{link.id}")
+        input(type="hidden", name="_csrf", value="#{csrf}")
+        input(type="submit", name="submit", value="Сохранить").btn.btn-default.btn-primary

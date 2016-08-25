@@ -1,0 +1,65 @@
+.header .navbar {
+    margin-bottom: 0;
+    border-radius: 0;
+}
+
+.content-wrapper {
+    padding: 1rem 0;
+}
+
+/*
+//  Table
+// --------------------------------------------------*/
+
+.table-controls {
+    text-align: center;
+}
+
+.table-controls a + a {
+    margin-left: 1.5rem;
+}
+
+/*
+//  Content
+// --------------------------------------------------*/
+
+.content header a {
+    margin: 15px 0;
+}
+
+/*
+//  Login screen
+// --------------------------------------------------*/
+
+.login-page {
+  background: #1abc9c;
+}
+
+.login {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    max-width: 300px;
+    max-height: 250px;
+
+    padding: 0;
+    margin: auto;
+
+    background: none;
+}
+
+.list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.list-item {
+    padding: 5px 10px;
+    font-size: 1.5rem;
+    background: #e74c3c;
+    border-radius: 5px;
+}

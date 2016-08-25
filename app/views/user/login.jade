@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+html(lang="en")
+head
+  meta(charset="UTF-8")
+  title Панель управления
+  link(rel="stylesheet", href="/css/bootstrap.min.css")
+  link(rel="stylesheet", href="/css/flat-ui.min.css")
+  link(rel="stylesheet", href="/css/dashboard.css")
+body(class="login-page")
+  form(action="/login", method="POST").login
+    input(type="hidden", name="_csrf", value="#{csrf}")
+    .login-form
+      .form-group
+        input#login-name.form-control.login-field(type='text', name="email", placeholder='example@mail.ru', required)
+        label.login-field-icon.fui-user(for='login-name')
+      .form-group
+        input#login-pass.form-control.login-field(type='password', name="password" value='', placeholder='Password', required)
+        label.login-field-icon.fui-lock(for='login-pass')
+      .form-group
+        if (errors)
+          ul.list.list-error
+            each error in errors
+              li.list-item= error
+      .form-group
+        input(type="submit", name="submit", value="Войти").btn.btn-primary.btn-lg.btn-block

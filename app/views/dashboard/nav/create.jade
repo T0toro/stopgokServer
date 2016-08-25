@@ -1,0 +1,14 @@
+extends ../layouts/app
+
+block content
+  h2 Произовольная ссылка
+  form(action="/dashboard/nav/store", method="POST")
+    fieldset
+      p.form-group
+        input(type="text", name="anchor", placeholder="Анкор").form-control
+      p.form-group
+        input(type="text", name="href", placeholder="http://example.org/test").form-control
+      p.form-group
+        input(type="hidden", name="_csrf", value="#{csrf}")
+        input(type="submit", name="submit", value="Сохранить").btn.btn-default.btn-primary
+

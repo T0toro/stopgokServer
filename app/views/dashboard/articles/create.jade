@@ -1,0 +1,31 @@
+extends ../layouts/app
+
+block main
+  h2 Новая статья
+
+block content
+  form(action="/dashboard/articles/store", method="POST")
+    fieldset
+      legend SEO
+      p.form-group
+        input(type="text", name="title", placeholder="Заголовок статьи").form-control
+      p.form-group
+        input(type="text", name="description", placeholder="Кратское описание статьи").form-control
+      p.form-group
+        input(type="text", name="slug", placeholder="url страницы").form-control
+    fieldset
+      legend Контент
+      p.form-group
+        input(type="text", name="name", placeholder="Название статьи").form-control
+      p.form-group
+        textarea(name="content", cols="30", rows="10", placeholder="Содержание статьи").form-control
+    fieldset
+      legend Настройки
+      p.form-group
+        select(name="status").form-control
+          option(value="0") Черновик
+          option(value="1") Опубликованно
+      .form-group
+        input(type="hidden", name="_csrf", value="#{csrf}")
+        input(type="submit", name="submit", value="Сохранить").btn.btn-default.btn-primary
+

@@ -1,0 +1,23 @@
+extends ../layouts/app
+
+block content
+  article.content
+    header
+      h1 Статьи
+    table.table
+      theader
+        tr
+          th #
+          th Название
+          th(colspan="2") Url
+      tbody
+        each article, index in articles
+          tr
+            td= index + 1
+            td= article.name
+            td= article.slug
+            td.table-controls
+              a(href="/dashboard/articles/edit/#{article.id}").btn.btn-default.btn-primary
+                i.fa.fa-pencil
+              a(href="/dashboard/articles/destroy/#{article.id}").btn.btn-default.btn-danger
+                i.fa.fa-trash

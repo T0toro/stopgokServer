@@ -1,0 +1,44 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+    meta(name='viewport', content='width=device-width,initial-scale=1')
+    link(href='https://fonts.googleapis.com/css?family=PT+Serif&subset=latin,cyrillic' rel='stylesheet' type='text/css')
+    link(href='https://fonts.googleapis.com/css?family=PT+Sans&subset=latin,cyrillic' rel='stylesheet' type='text/css')
+    link(href='https://fonts.googleapis.com/css?family=Philosopher&subset=latin,cyrillic' rel='stylesheet' type='text/css')
+
+    if title
+      title= title
+    else
+      title Jsbook
+
+    meta(name='description', content="")
+
+    block head
+      link(rel='stylesheet', href='/css/app.css')
+  body
+    #page
+      header#header.clearfix
+        .container
+          h1
+            a(href='/').site-name
+              span JS
+              | book
+            p мысли асинхронно
+          if links
+            nav.nav.nav-main
+              ul
+                li
+                  a(href="/") Главная
+                each link, index in links
+                  li
+                    a(href="/#{link.href}")= link.anchor
+          else
+            nav.nav.nav-main
+              ul
+                li
+                  a(href="/") Главная
+      .container
+        main#content
+          block content
