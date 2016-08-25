@@ -89,4 +89,14 @@ module.exports = (app, passport) => {
 
   app.post('/dashboard/nav/store', navigation.store);
   app.post('/dashboard/nav/update', navigation.update);
+
+
+  // VKauth
+  // --------------------------------------------
+  app.post('/callback', (req, res, next) => {
+    console.info(req);
+
+    next();
+  });
+
 };

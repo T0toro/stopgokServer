@@ -62,9 +62,7 @@ body {
 #header h1 {
     display: inline-block;
     margin: 50px 0;
-    padding: 20px;
     overflow: hidden;
-    border: 5px solid;
 }
 
 #header p {
@@ -75,16 +73,16 @@ body {
     display: inline-block;
 
     color: #222;
+    font-family: 'PT Serif', serif;
     font-size: 5.8rem;
     text-decoration: none;
     text-transform: uppercase;
 
-    border-bottom: 2px solid;
 }
 
-#header .site-name span {
-    font-size: 5.8rem;
-    font-weight: bold;
+#header .site-name hr {
+    width: 60%;
+    margin: 1rem auto;
 }
 
 .container {
