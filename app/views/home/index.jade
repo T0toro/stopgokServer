@@ -5,6 +5,12 @@ block content
     each article in articles
       article.list-item
         header.list-item-header
-          h2= article.name
-        section!= article.content
+        section
+          p!= article.text
+        figure
+          if article.attachments[0] != null
+            - let photoObj = article.attachments[0]
+            img(src="#{photoObj.photo['photo_604']}", alt="#{photoObj.text}", width="#{photoObj.width}", height="#{photoObj.height}")
+        footer
+          hr
 

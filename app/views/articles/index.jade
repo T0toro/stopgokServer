@@ -3,7 +3,4 @@ extends ../layouts/app
 block content
   section.list.list-articles
     each article in articles
-      article
-        header
-          h2
-            a(href="/articles/edit/#{article.id}")= article.name
+      article= article.text

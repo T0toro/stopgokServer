@@ -7,20 +7,14 @@
  * @description :: main app routes
  */
 
-/*!
- * Module variables
+/**
+ * Module dependencies
  */
 
-let home, user, article, navigation;
-
-/*!
- * Module dependencies.
- */
-
-home       = require('./../app/controllers/home');
-user       = require('./../app/controllers/user');
-article    = require('./../app/controllers/article');
-navigation = require('./../app/controllers/navigation');
+const home       = require('./../app/controllers/home'),
+      user       = require('./../app/controllers/user'),
+      article    = require('./../app/controllers/article'),
+      navigation = require('./../app/controllers/navigation');
 
 /*!
  * Expose
@@ -71,13 +65,15 @@ module.exports = (app, passport) => {
   // --------------------------------------------
 
   app.get('/dashboard/articles', article.index);
-  app.get('/dashboard/articles/create', article.create);
   app.get('/dashboard/articles/edit/:id', article.edit);
   app.get('/dashboard/articles/destroy/:id', article.destroy);
 
-  app.post('/dashboard/articles/store', article.store);
   app.post('/dashboard/articles/update', article.update);
 
+  // VK Api
+  // --------------------------------------------
+  app.get('/articles/all', article.indexJSON);
+  app.post('/callback', article.store);
 
   // Navigation
   // --------------------------------------------
@@ -89,14 +85,4 @@ module.exports = (app, passport) => {
 
   app.post('/dashboard/nav/store', navigation.store);
   app.post('/dashboard/nav/update', navigation.update);
-
-
-  // VKauth
-  // --------------------------------------------
-  app.post('/callback', (req, res, next) => {
-    console.info(req);
-
-    next();
-  });
-
 };

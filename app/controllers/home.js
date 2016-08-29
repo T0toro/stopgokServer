@@ -16,7 +16,7 @@ const mongoose = require('mongoose'),
 exports.index = (req, res, next) => {
   async.parallel([(cb) => {
     Article
-      .find({ status: 1 })
+      .find()
       .exec((err, articles) => {
         if (err) { return cb(err); }
 
@@ -34,7 +34,7 @@ exports.index = (req, res, next) => {
     if (err) { return next(err); }
 
     res.render('home/index', {
-      title: 'Node Express Mongoose Boilerplate',
+      title: 'Рабочая группа по проблеме Томинского ГОКа',
       articles: result[0],
       links: result[1]
     });

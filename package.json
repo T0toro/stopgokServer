@@ -28,6 +28,7 @@
     "jade": "^1.11.0",
     "method-override": "^2.3.3",
     "mongoose": "^4.5.2",
+    "mongoose-find-one-or-create": "^0.2.0",
     "mongoose-timestamp": "^0.6.0",
     "mongoose-user": "0.0.1",
     "morgan": "^1.6.1",

@@ -11,19 +11,19 @@
  * Module dependencies
  */
 
-const fs = require('fs'),
-      path = require('path'),
-      express = require('express'),
+const fs       = require('fs'),
+      path     = require('path'),
+      express  = require('express'),
       mongoose = require('mongoose'),
       passport = require('passport');
 
-let app = express(),
-    port = process.env.PORT || 3000;
+let app  = express(),
+    port = process.env.PORT || 8082;
 
 // Connect to mongodb
 let connect = function() {
   mongoose.connect(
-    'mongodb://localhost/jsbook', {
+    'mongodb://localhost/stopgok', {
       server: {
         socketOptions: {
           keepAlive: 1

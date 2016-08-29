@@ -43,19 +43,30 @@ exports.index = (req, res, next) => {
     });
 };
 
-exports.create = (req, res) => res.render('dashboard/articles/create');
-
 exports.store = (req, res, next) => {
-  Article.create({
-    title: req.body.title,
-    description: req.body.description,
-    name: req.body.name,
-    content: req.body.content,
-    status: req.body.status
+  if ('type' in req.body && req.body.type !== 'wall_post_new') { return res.status(400).end(); }
+
+  let post = req.body.object;
+
+  Article.findOne({
+    id: post.id
   }, (err, article) => {
     if (err) { return next(err); }
 
-    return res.redirect('/dashboard/articles');
+    if (article !== null) { return res.status(400).end(); }
+
+    Article
+      .create({
+        id: post.id,
+        created_by: post.created_by,
+        date: post.date,
+        text: post.text,
+        attachments: 'attachments' in post ? post.attachments : [],
+      }, (err, newArticle) => {
+        if (err) { return next(err); }
+
+        return res.status(200).end();
+      });
   });
 };
 
@@ -99,5 +110,24 @@ exports.destroy = (req, res, next) => {
       if (err) { return next(err); }
 
       return res.redirect('/dashboard/articles');
+    });
+};
+
+// API
+//------------------------------------------------
+
+exports.indexJSON = (req, res, next) => {
+  console.info('test');
+  Article
+    .find()
+    .exec((err, articles) => {
+      if (err) { return next(err); }
+
+      if (Array.isArray(articles)) { return res.json(articles); }
+
+      return res.json({
+        code: 400,
+        msg: 'Сервис находится на обслуживании'
+      });
     });
 };

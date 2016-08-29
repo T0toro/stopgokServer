@@ -6,47 +6,38 @@
  */
 
 /*
- * Module variables
- */
-
-let mongoose, timestamps, Schema, ArticleSchema;
-
-/*
  * Module dependencies
  */
 
-mongoose = require('mongoose');
-timestamps = require('mongoose-timestamp');
-Schema = mongoose.Schema;
+
+
+const mongoose        = require('mongoose'),
+      timestamps      = require('mongoose-timestamp');
 
 /*
  * ArticleSchema
  */
 
-ArticleSchema = new Schema({
-  title: {
-    type: String,
-    default: ''
-  },
-  description: {
-    type: String,
-    default: ''
-  },
-  slug: {
-    type: String,
-    default: ''
-  },
-  name: {
-    type: String,
-    default: ''
-  },
-  content: {
-    type: String,
-    default: ''
-  },
-  status: {
+let ArticleSchema = new mongoose.Schema({
+  id: {
     type: Number,
+    default: 0
+  },
+  created_by: {
+    type: Number,
+    default: 0
+  },
+  date: {
+    type: String,
     default: ''
+  },
+  text: {
+    type: String,
+    default: ''
+  },
+  attachments: {
+    type: Array,
+    default: []
   }
 });
 

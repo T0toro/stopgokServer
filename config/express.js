@@ -1,40 +1,32 @@
 'use strict';
 
 /**
-* Module variables
-*/
-
-let express, session, compression, morgan, config, cookieParser, cookieSession, bodyParser, methodOverride, csrf, mongoStore, flash, winston, helpers, pkg, env, log;
-
-/**
 * Module dependencies.
 */
 
-express = require('express');
+const express = require('express'),
+      session = require('express-session'),
+      compression = require('compression'),
+      morgan = require('morgan'),
+      winston = require('winston'),
 
-session = require('express-session');
-compression = require('compression');
+      cookieParser = require('cookie-parser'),
+      bodyParser = require('body-parser'),
+      cookieSession = require('cookie-session'),
 
-morgan = require('morgan');
-winston = require('winston');
+      methodOverride = require('method-override'),
+      // csrf = require('csurf'),
 
-cookieParser = require('cookie-parser');
-bodyParser = require('body-parser');
-cookieSession = require('cookie-session');
+      mongoStore = require('connect-mongo')(session),
+      flash = require('connect-flash'),
+      helpers = require('view-helpers'),
 
-methodOverride = require('method-override');
-csrf = require('csurf');
+      config = require('./index'),
+      pkg = require('../package.json'),
 
-mongoStore = require('connect-mongo')(session);
-flash = require('connect-flash');
-helpers = require('view-helpers');
+      env = process.env.NODE_ENV || 'development';
 
-config = require('./index');
-pkg = require('../package.json');
-
-env = process.env.NODE_ENV || 'development';
-
-/**
+/*!
 * Expose
 */
 
@@ -55,6 +47,7 @@ module.exports = function(app, passport) {
 
   // Use winston on production
   // --------------------------------------------
+  let log;
 
   if (env !== 'development') {
     log = {
@@ -113,9 +106,11 @@ module.exports = function(app, passport) {
   // --------------------------------------------
 
   app.use(cookieParser());
+  
   app.use(cookieSession({
     secret: 'secret'
   }));
+
   app.use(session({
     secret: pkg.name,
     proxy: true,
@@ -146,13 +141,13 @@ module.exports = function(app, passport) {
   // Adds CSRF support
   // --------------------------------------------
 
-  if (process.env.NODE_ENV !== 'test') {
-    app.use(csrf());
+  // if (process.env.NODE_ENV !== 'test') {
+  //   app.use(csrf());
 
-    // This could be moved to view-helpers :-)
-    app.use((req, res, next) => {
-      res.locals.csrf = req.csrfToken();
-      next();
-    });
-  }
+  //   // This could be moved to view-helpers :-)
+  //   app.use((req, res, next) => {
+  //     res.locals.csrf = req.csrfToken();
+  //     next();
+  //   });
+  // }
 };
